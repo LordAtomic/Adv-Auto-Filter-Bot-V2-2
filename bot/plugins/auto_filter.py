@@ -162,7 +162,7 @@ async def auto_filter(bot, update):
             InlineKeyboardButton(f"🔰 Page 1/{len_result if len_result < max_pages else max_pages} 🔰", callback_data="ignore")
         ])
         
-        
+        result[0].append([ InlineKeyboardButton(f"🔰 Channel🔰", url="https://t.me/MG_MEDIA") ])       
         # if show_invite is True Append invite link buttons
         if show_invite:
             
