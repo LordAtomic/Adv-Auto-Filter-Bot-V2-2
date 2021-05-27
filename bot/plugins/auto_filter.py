@@ -60,6 +60,11 @@ async def auto_filter(bot, update):
     filters = await db.get_filters(group_id, query)
     
     if filters:
+        results.append(
+                [
+                    InlineKeyboardButton("channel", url="https://t.me/MG_MEDIA")
+                ]
+            )
         for filter in filters: # iterating through each files
             file_name = filter.get("file_name")
             file_type = filter.get("file_type")
@@ -162,7 +167,7 @@ async def auto_filter(bot, update):
             InlineKeyboardButton(f"🔰 Page 1/{len_result if len_result < max_pages else max_pages} 🔰", callback_data="ignore")
         ])
         
-        result[0].append([ InlineKeyboardButton(f"🔰 Channel🔰", url="https://t.me/MG_MEDIA") ])       
+        result[0].append([ InlineKeyboardButton(f"❤️JOIN OUR SECOND CHANNEL❤️", url="https://t.me/MG_MEDIA") ])       
         # if show_invite is True Append invite link buttons
         if show_invite:
             
