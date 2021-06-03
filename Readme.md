@@ -1,5 +1,7 @@
 # Adv Auto Filter Bot V2
 
+<p align="middle">
+<img src="https://telegra.ph/file/9e831d15da94deb56ef4c.jpg" width="150" height="150"><br>
 <p align="center">
   <a href="https://github.com/AlbertEinsteinTG/Adv-Auto-Filter-Bot-V2/stargazers">
     <img src="https://img.shields.io/github/stars/AlbertEinsteinTG/Adv-Auto-Filter-Bot-V2?style=social">
