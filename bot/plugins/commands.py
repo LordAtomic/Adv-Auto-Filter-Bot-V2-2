@@ -4,14 +4,33 @@
 
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from pyrogram.errors import UserNotParticipant
 from bot import Translation # pylint: disable=import-error
 from bot.database import Database # pylint: disable=import-error
 
 db = Database()
 
 @Client.on_message(filters.command(["start"]) & filters.private, group=1)
-async def start(bot, update):
-    
+async def start(bot, update): 
+    update_channel = "@movieuploader1"
+    if update_channel:
+        try:
+            user = await bot.get_chat_member(update_channel, update.chat.id)
+            if user.status == "kicked out":
+               await update.reply_text("🤭 Sorry Dude, You are B A N N E D 🤣🤣🤣")
+               return
+        except UserNotParticipant:
+            #await update.reply_text(f"Join @{update_channel} To Use Me")
+            await update.reply_text(
+                text="<b>Join Our Movie Channel 🤭        𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗰𝗵𝗮𝗻𝗻𝗲𝗹              🤭നിങ്ങൾക് സിനിമകൾ വെന്നോ? അതിനായി അത്യം ങ്ങളുടെ മെയിൻ ചാനലിൽ ജോയിൻ ചെയ്യണം...Join ചെയതത്തിനു ശേഷം വീണ്ടും ബോട്ട് /start ആക്കൂ....😁😁</b>\n<b>ꜱʜᴀʀᴇ ᴀɴᴅ ꜱᴜᴘᴘᴏʀᴛ\n\n<a href='https://t.me/movieuploaders'>©MOVIEUPLOADERS</a></b>",
+                reply_markup=InlineKeyboardMarkup([
+                    [ InlineKeyboardButton(text=" 🔰JOIN OUR CHANNEL🔰 ", url=f"https://t.me/movieuploader1")]
+              ])
+            )
+            return
+        except Exception:
+            await update.reply_text("Something Wrong. Contact my Support Group")
+            return 
     try:
         file_uid = update.command[1]
     except IndexError:
@@ -38,7 +57,7 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                    'Developers', url="https://t.me/CrazyBotsz"
+                                    'Channel✅️', url="https://t.me/joinchat/Rj8lxYv8Cro1ODc1"
                                 )
                         ]
                     ]
@@ -57,7 +76,7 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                    'Developers', url="https://t.me/CrazyBotsz"
+                                    'Channel✅️', url="https://t.me/joinchat/Rj8lxYv8Cro1ODc1"
                                 )
                         ]
                     ]
@@ -76,7 +95,7 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                    'Developers', url="https://t.me/CrazyBotsz"
+                                    'Channel✅️', url="https://t.me/joinchat/Rj8lxYv8Cro1ODc1"
                                 )
                         ]
                     ]
@@ -89,19 +108,19 @@ async def start(bot, update):
         return
 
     buttons = [[
-        InlineKeyboardButton('Developers', url='https://t.me/CrazyBotsz'),
-        InlineKeyboardButton('Source Code 🧾', url ='https://github.com/AlbertEinsteinTG/Adv-Auto-Filter-Bot-V2')
+        InlineKeyboardButton('Owner✅️', url='https://t.me/Rfxjoker'),
+        InlineKeyboardButton('Group✅️', url ='https://t.me/movieuploaders')
     ],[
-        InlineKeyboardButton('💡 HELP', callback_data="help"),
-        InlineKeyboardButton(' CLOSE', callback_data="close")
+        InlineKeyboardButton('Channel✅️', url='https://t.me/joinchat/Rj8lxYv8Cro1ODc1')
+    ],[
+        InlineKeyboardButton('Help ⚙', callback_data="help")
     ]]
     
     reply_markup = InlineKeyboardMarkup(buttons)
     
-    await bot.send_photo(
+    await bot.send_message(
         chat_id=update.chat.id,
-        photo="https://telegra.ph/file/de86c8187b332cf5d3780.jpg",
-        caption=Translation.START_TEXT.format(
+        text=Translation.START_TEXT.format(
                 update.from_user.first_name),
         reply_markup=reply_markup,
         parse_mode="html",
