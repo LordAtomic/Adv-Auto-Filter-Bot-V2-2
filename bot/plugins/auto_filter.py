@@ -62,7 +62,7 @@ async def auto_filter(bot, update):
     if filters:
         results.append(
                 [
-                    InlineKeyboardButton("channel", url="https://t.me/MG_MEDIA")
+                    InlineKeyboardButton("⚠️JOIN OUR MAIN CHANNEL⚠️", url="https://t.me/joinchat/Rj8lxYv8Cro1ODc1")
                 ]
             )
         for filter in filters: # iterating through each files
@@ -167,7 +167,7 @@ async def auto_filter(bot, update):
             InlineKeyboardButton(f"🔰 Page 1/{len_result if len_result < max_pages else max_pages} 🔰", callback_data="ignore")
         ])
         
-        result[0].append([ InlineKeyboardButton(f"❤️JOIN OUR SECOND CHANNEL❤️", url="https://t.me/MG_MEDIA") ])       
+        result[0].append([ InlineKeyboardButton(f"🔎HOW TO SEARCH MOVIES🔍", url="https://t.me/movieuploader1/79") ])       
         # if show_invite is True Append invite link buttons
         if show_invite:
             
@@ -296,4 +296,3 @@ async def recacher(group_id, ReCacheInvite=True, ReCacheActive=False, bot=Bot, u
             
             ACTIVE_CHATS[str(group_id)] = achatId
     return 
-
